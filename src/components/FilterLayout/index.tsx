@@ -10,17 +10,14 @@ const FilterLayout = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <SearchInput />
-      <div className="bg-gray-50">
-        <MobileFilterLayout filters={APARTMENT_FILTERS} setOpen={setOpen} show={open} />
-        <DesktopFilterLayout
-          filters={APARTMENT_FILTERS}
-          setOpen={setOpen}
-          sortOptions={SORT_OPTIONS}
-        />
-      </div>
-    </>
+    <div className="bg-gray-50">
+      <MobileFilterLayout filters={APARTMENT_FILTERS} setOpen={setOpen} show={open} />
+      <DesktopFilterLayout
+        filters={APARTMENT_FILTERS}
+        setOpen={setOpen}
+        sortOptions={SORT_OPTIONS}
+      />
+    </div>
   );
 };
 

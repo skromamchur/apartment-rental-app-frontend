@@ -9,7 +9,6 @@ const FILTER_TABS = {
 };
 
 export const FilterInputTab = ({ sectionId }: { sectionId: string }) => {
-  console.log(sectionId);
   const FilterTabComponent = FILTER_TABS[sectionId];
 
   return <FilterTabComponent />;

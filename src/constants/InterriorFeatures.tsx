@@ -1,10 +1,18 @@
 export const INTERIOR_FEATURES = [
-  "Jacuzzi",
-  "Sauna",
-  "Laminate",
-  "Double Glazing",
-  "Spotlight",
-  "Balcony",
-  "Alarm",
-  "Wallpaper"
-]
+  'Alarm',
+  'Balcony',
+  'Wifi',
+  'TV',
+  'Dryer',
+  'Shower',
+  'Bathtub',
+  'Microwave',
+  'Oven',
+  'Coffee maker',
+  'Free street parking',
+  'Elevator',
+  'Gym',
+  'Air conditioning',
+  'Terrace',
+  'Jacuzzi',
+];

@@ -1,8 +1,25 @@
-export const SORT_OPTIONS = [];
+import { ApartmentSortType } from '@/types/Apartament';
+
+export const SORT_OPTIONS: { value: ApartmentSortType; label: string }[] = [
+  { value: 'DATE', label: 'Sort by date' },
+  { value: 'PRICE_ASC', label: 'Sort by price ascending' },
+  { value: 'PRICE_DESC', label: 'Sort by price descending' },
+  { value: 'PRICE_PER_SQUARE_ASC', label: 'Sort by price per square ascending' },
+  { value: 'PRICE_PER_SQUARE_DESC', label: 'Sort by price per square descending' },
+];
 
 export const APARTMENT_FILTERS = [
   {
-    id: 'rooms',
+    id: 'type',
+    name: 'Type',
+    options: [
+      { value: 'month', label: 'Month' },
+      { value: 'day', label: 'Day' },
+    ],
+    type: 'checkboxes',
+  },
+  {
+    id: 'roomsCount',
     name: 'Rooms',
     options: [
       { value: 1, label: '1' },
@@ -18,13 +35,13 @@ export const APARTMENT_FILTERS = [
   },
   {
     id: 'floors',
-    name: 'Floors',
+    name: 'Floor',
     options: [],
     type: 'inputs',
   },
   {
     id: 'sizes',
-    name: 'Sizes',
+    name: 'Square',
     options: [],
     type: 'inputs',
   },

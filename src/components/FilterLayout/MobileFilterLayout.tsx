@@ -110,11 +110,13 @@ export const MobileFilterLayout = ({
                                     label="Min Price"
                                     onChange={handleMinPriceChange}
                                     value={minPrice}
+                                    icon={<span className="text-gray-500 sm:text-sm">₴</span>}
                                   />
                                   <InputPrice
                                     label="Max Price"
                                     onChange={handleMaxPriceChange}
                                     value={maxPrice}
+                                    icon={<span className="text-gray-500 sm:text-sm">₴</span>}
                                   />
                                 </div>
                               )}

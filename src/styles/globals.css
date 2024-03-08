@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ReactCrop--circular-crop .ReactCrop__crop-selection:after{
+  border : none !important;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;  
+    scrollbar-width: none; 
+  }
+}
+
+.pac-logo:after{
+  display: none !important;
+}
