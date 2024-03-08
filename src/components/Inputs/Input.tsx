@@ -2,15 +2,14 @@ import { InputHTMLAttributes, ReactNode } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { InputLabel } from '@/components/Inputs/InputLabel';
 
-import { Squares2X2Icon } from '@heroicons/react/20/solid';
 import classNames from 'classnames';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   name: string;
-  wrapperClassName: string;
+  wrapperClassName?: string;
   isIcon?: boolean;
-  icon: ReactNode;
+  icon?: ReactNode;
 }
 
 export const Input = ({

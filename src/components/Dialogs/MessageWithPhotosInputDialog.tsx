@@ -39,7 +39,7 @@ export const MessageWithPhotosInputDialog = ({ photos, startMessage }) => {
     <DialogTemplate>
       <form onSubmit={methods.handleSubmit(onSubmit)}>
         <div className="grid grid-cols-2 gap-2">
-          {Array.from(photos).map((file) => {
+          {Array.from(photos).map((file: File) => {
             const imag = GenerateImagePreview(file);
 
             return <img src={imag} className="h-full" />;

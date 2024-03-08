@@ -24,14 +24,11 @@ export const ChatProvider = ({ children }) => {
     let result: Dialog[] = [];
 
     if (connections) {
-      console.log(connections);
       connections.forEach((connection: Connection) => {
-        console.log(connection);
-
         result.push({
           with: connection.from.id === id ? connection.to : connection.from,
           messages: connection.messages.sort((m: IChatMessage, a: IChatMessage) => {
-            return new Date(m.createdAt) - new Date(a.createdAt);
+            return Number(new Date(m.createdAt)) - Number(new Date(a.createdAt));
           }),
           id: connection.id,
         });

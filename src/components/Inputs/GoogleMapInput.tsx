@@ -7,7 +7,7 @@ import { getPlaceDetails } from '@/api/maps';
 export const GoogleMapInput = () => {
   const { control } = useFormContext();
 
-  const InputRef = useRef();
+  const InputRef = useRef<HTMLInputElement>();
 
   const { field } = useController({
     name: 'locationId',
@@ -37,40 +37,15 @@ export const GoogleMapInput = () => {
   };
 
   const handleMapClick = async (event) => {
-    // Отримати координати місця, на яке клікнуто
-    const clickedPlace = {
-      geometry: {
-        location: {
-          lat: event.latLng.lat(),
-          lng: event.latLng.lng(),
-        },
-      },
-    };
-
-    console.log({
-      lat: event.latLng.lat(),
-      lng: event.latLng.lng(),
-    });
-
-    console.log(
-      await getPlaceDetails({
-        lat: event.latLng.lat(),
-        lng: event.latLng.lng(),
-      }),
-    );
-
     const foundedPlace = await getPlaceDetails({
       lat: event.latLng.lat(),
       lng: event.latLng.lng(),
     });
 
-    InputRef.current.value = foundedPlace.result;
-
-    // // Оновити стан та викликати функцію для обробки вибору місця
+    if (InputRef && InputRef.current) {
+      InputRef.current.value = foundedPlace.result;
+    }
     setSelectedPlace(foundedPlace.geometry);
-
-    console.log(foundedPlace);
-    console.log(foundedPlace.geometry.place_id);
 
     field.onChange(foundedPlace.geometry.place_id);
   };

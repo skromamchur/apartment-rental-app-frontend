@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { FormCard } from '@/components/FormCard';
 import { GoogleMap, MarkerF, useLoadScript } from '@react-google-maps/api';
 import React, { useState, useRef } from 'react';

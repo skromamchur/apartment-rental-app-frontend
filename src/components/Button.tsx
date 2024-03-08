@@ -1,9 +1,9 @@
-import { InputHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import classNames from 'classnames';
 
-interface ButtonProps extends InputHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  variant: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary';
   className?: string;
 }
 

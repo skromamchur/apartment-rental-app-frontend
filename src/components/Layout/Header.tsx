@@ -32,7 +32,7 @@ export const Header = () => {
       >
         <div className="flex items-center gap-x-12">
           <NextLink href={APP_ROUTES.HOME}>
-            <NextImage src="/logo.svg" width="48" height="32" />
+            <NextImage src="/logo.svg" width="48" height="32" alt="" />
           </NextLink>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
@@ -91,7 +91,7 @@ export const Header = () => {
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <NextLink href={APP_ROUTES.HOME}>
-              <NextImage src="/logo.svg" width="48" height="32" />
+              <NextImage src="/logo.svg" width="48" height="32" alt="" />
             </NextLink>
             <button
               type="button"

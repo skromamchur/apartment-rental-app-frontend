@@ -16,9 +16,11 @@ export const ChatMessageInput = () => {
     formData.append('toUserId', dialogs[currentChatIndex].with.id.toString());
     formData.append('text', message);
 
-    Array.from(inputRef.current.files).forEach((photo: Blob) => {
-      formData.append(`photos`, photo);
-    });
+    if (inputRef.current && inputRef.current.files) {
+      Array.from(inputRef.current.files).forEach((photo: Blob) => {
+        formData.append(`photos`, photo);
+      });
+    }
 
     await axiosClient.post(`/connections/messages/${dialogs[currentChatIndex].id}`, formData, {
       headers: {
@@ -31,7 +33,7 @@ export const ChatMessageInput = () => {
 
   const [startMessage, setStartMessage] = useState('');
 
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement>();
 
   return (
     <>
@@ -40,7 +42,6 @@ export const ChatMessageInput = () => {
         Array.from(inputRef.current.files).length > 0 && (
           <MessageWithPhotosInputDialog
             photos={inputRef.current.files}
-            text={'text'}
             startMessage={startMessage}
           />
         )}

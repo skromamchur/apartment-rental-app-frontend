@@ -83,7 +83,7 @@ export const FlatCard = ({
       }}
     >
       <div className="w-full aspect-[265/165] relative">
-        {photo && <NextImage src={photo} objectFit="cover" layout="fill" />}
+        {photo && <NextImage src={photo} objectFit="cover" layout="fill" alt="" />}
       </div>
       <div className="mt-3">
         <span className={classNames(['text-black font-medium text-xl', roboto.className])}>

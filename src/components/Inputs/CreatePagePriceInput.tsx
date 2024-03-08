@@ -43,7 +43,7 @@ export const CreatePagePriceInput = () => {
             className="h-full rounded-md border-0 bg-transparent py-0 pl-2 pr-3 text-gray-500  sm:text-sm focus:outline-none"
             defaultValue="UAH"
             onChange={(event) => {
-              setCurrency(event.target.value);
+              setCurrency(event.target.value as 'USD' | 'EUR' | 'UAH');
             }}
           >
             <option>UAH</option>

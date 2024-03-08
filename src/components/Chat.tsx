@@ -10,13 +10,9 @@ export const Chat = () => {
   const router = useRouter();
 
   useEffect(() => {
-    console.log(dialogs);
-  }, [dialogs]);
-
-  useEffect(() => {
     if (router.query.chatWith) {
       for (let i = 0; i < dialogs.length; i++) {
-        if (dialogs[i].with.id == router.query.chatWith) {
+        if (dialogs[i].with.id === Number(router.query.chatWith)) {
           changeCurrentChatIndex(i);
         }
       }
@@ -24,9 +20,9 @@ export const Chat = () => {
   }, [router.query]);
 
   return (
-    <div class="flex flex-1 border border-t">
+    <div className="flex flex-1 border border-t">
       {dialogs.length && (
-        <div class="flex flex-row justify-between bg-white flex-1">
+        <div className="flex flex-row justify-between bg-white flex-1">
           <ListOfContacts contacts={dialogs.map((d) => d.with)} />
           <ChatField messages={dialogs[currentChatIndex].messages} />
         </div>

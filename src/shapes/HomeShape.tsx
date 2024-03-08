@@ -100,6 +100,7 @@ export const HomeShape = () => {
             onClick={() => {
               router.push(APP_ROUTES.CREATE);
             }}
+            type="button"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

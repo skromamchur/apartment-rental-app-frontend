@@ -19,7 +19,7 @@ export const getApartments = async ({
   type,
   sortType,
   state,
-  city
+  city,
 }) => {
   const { data } = await axiosClient.get('/apartments', {
     params: {
@@ -34,7 +34,7 @@ export const getApartments = async ({
       maxFloor,
       sortType,
       state,
-      city
+      city,
     },
   });
 
@@ -66,7 +66,7 @@ export const createApartment = async ({
     formData.append('square', square);
     formData.append('type', type);
 
-    Array.from(photos).forEach((photo) => {
+    Array.from(photos).forEach((photo: Blob) => {
       formData.append(`photos`, photo, photo.name);
     });
 
