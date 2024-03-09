@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { useController } from 'react-hook-form';
 
 import ReactCrop, { type Crop, PixelCrop } from 'react-image-crop';
@@ -9,6 +9,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import { canvasPreview } from '@/utils/CanvasPreview';
 import { Button } from '@/components/Button';
+import { UserContext } from '@/contexts/UserContext';
 
 export const SettingsAvatarInput = () => {
   const {
@@ -17,19 +18,15 @@ export const SettingsAvatarInput = () => {
     name: 'avatar',
   });
 
+  const { avatar } = useContext(UserContext);
+
   const [open, setOpen] = useState(true);
-  const [chosenImage, setChosenImage] = useState<string>(null);
+  const [chosenImage, setChosenImage] = useState<string>(avatar);
   const [showCropImage, setShowCropImage] = useState<boolean>(false);
 
   const imageFieldRef = useRef(null);
 
-  const [crop, setCrop] = useState<Crop>({
-    unit: 'px',
-    x: 0,
-    y: 0,
-    width: 164,
-    height: 164,
-  });
+  const [crop, setCrop] = useState<Crop>(null);
 
   const onChangeAvatarButtonClick = () => {
     imageFieldRef.current.click();
@@ -89,9 +86,14 @@ export const SettingsAvatarInput = () => {
                   leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                   leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 >
-                  <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
-                    <ReactCrop crop={crop} onChange={(c) => setCrop(c)} circularCrop locked>
-                      <img src={chosenImage} ref={imageRef} crossOrigin="anonymous" />
+                  <Dialog.Panel className="relative transform overflow-hidden rounded-lg min-w-[650px] bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+                    <ReactCrop crop={crop} onChange={(c) => setCrop(c)} circularCrop={true}>
+                      <img
+                        src={chosenImage}
+                        ref={imageRef}
+                        crossOrigin="anonymous"
+                        className="min-w-[650px]"
+                      />
 
                       <canvas ref={ref} className="hidden" />
                     </ReactCrop>
@@ -122,10 +124,7 @@ export const SettingsAvatarInput = () => {
         <div className="mt-2 flex items-center">
           <img
             className="inline-block h-20 w-20 rounded-full"
-            src={
-              value ??
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuHUlP6F15TiQpEK3oo9uzyvk0gFBypWJqAA&usqp=CAU'
-            }
+            src={value ?? '/empty-avatar.png'}
             alt=""
           />
           <div className="relative ml-4">
@@ -143,13 +142,15 @@ export const SettingsAvatarInput = () => {
               <span>Change</span>
             </label>
           </div>
-          <button
-            type="button"
-            className="ml-6 text-sm font-medium leading-6 text-slate-900"
-            onClick={onDeleteAvatar}
-          >
-            Remove
-          </button>
+          {value && (
+            <button
+              type="button"
+              className="ml-6 text-sm font-medium leading-6 text-slate-900"
+              onClick={onDeleteAvatar}
+            >
+              Remove
+            </button>
+          )}
         </div>
       </div>
     </>

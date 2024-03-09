@@ -70,13 +70,13 @@ export default function Example() {
                       <SettingsPersonalInformation />
 
                       <div className="flex justify-end gap-x-3 pt-8">
-                        <Button
-                          type="button"
-                          className="rounded-md mx-0 bg-white px-3 py-2 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50"
-                          variant="secondary"
-                        >
-                          Cancel
-                        </Button>
+                        {/*<Button*/}
+                        {/*  type="button"*/}
+                        {/*  className="rounded-md mx-0 bg-white px-3 py-2 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50"*/}
+                        {/*  variant="secondary"*/}
+                        {/*>*/}
+                        {/*  Cancel*/}
+                        {/*</Button>*/}
                         <Button
                           type="submit"
                           className="inline-flex mx-0 justify-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
