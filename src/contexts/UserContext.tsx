@@ -1,10 +1,8 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext } from 'react';
 import { UserInterface } from '@/types/User';
-import axiosClient from '@/api/config/axios';
 import { getProfile } from '@/api/auth';
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
-import { getApartments } from '@/api/apartments';
 
 interface UserContextInterface extends UserInterface {
   isLoading: boolean;
@@ -21,11 +19,11 @@ export const UserProvider = ({ children }) => {
   const {
     data: user,
     isLoading,
+    isFetched,
     refetch,
   } = useQuery({
     queryKey: ['profile'],
     queryFn: () => getProfile(),
-    refetchInterval: 2000,
   });
 
   const logOut = () => {
@@ -50,7 +48,7 @@ export const UserProvider = ({ children }) => {
           getUser: () => {
             refetch();
           },
-          connections: [...user.connections, ...user.receivedConnections],
+          connections: user ? [...user.connections, ...user.receivedConnections] : [],
         }}
       >
         {children}
