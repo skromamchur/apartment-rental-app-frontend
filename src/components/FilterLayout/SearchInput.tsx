@@ -6,7 +6,7 @@ export const SearchInput = () => {
   const { handleSearchChange } = useContext(FilterContext);
 
   return (
-    <div className="relative mt-4">
+    <div className="relative lg:min-w-[800px] bg-gray-400 rounded-full">
       <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
         <SearchIcon />
       </div>

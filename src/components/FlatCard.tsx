@@ -69,14 +69,16 @@ export const FlatCard = ({
   id,
   date,
   titleClassname = '',
+  wrapperClassName = '',
 }) => {
   const router = useRouter();
 
   return (
     <div
       className={classNames([
-        'bg-white border border-black border-opacity-10 shrink-0 p-[10px] cursor-pointer',
+        'bg-white border border-black border-opacity-10 shrink-0 p-[10px] cursor-pointer max-w-[305px]',
         roboto.className,
+        wrapperClassName,
       ])}
       onClick={() => {
         router.push(`/apartment/${id}`);
