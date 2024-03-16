@@ -11,6 +11,8 @@
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
+    "@hookform/error-message": "^2.0.1",
+    "@hookform/resolvers": "^3.3.4",
     "@react-google-maps/api": "^2.19.2",
     "@tabler/icons-react": "^2.35.0",
     "@tanstack/react-query": "^5.4.3",
@@ -24,6 +26,7 @@
     "cyrillic-to-translit-js": "^3.2.1",
     "eslint": "8.49.0",
     "eslint-config-next": "13.5.2",
+    "firebase": "^10.9.0",
     "google-map-react": "^2.2.1",
     "javascript-time-ago": "^2.5.9",
     "moment": "^2.30.1",
@@ -41,7 +44,9 @@
     "react-toastify": "^10.0.4",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2",
-    "ua-en-translit": "^3.2.5"
+    "ua-en-translit": "^3.2.5",
+    "uuid": "^9.0.1",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "prettier": "^3.0.3",

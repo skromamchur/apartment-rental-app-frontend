@@ -2,20 +2,21 @@ import { useController } from 'react-hook-form';
 
 import Select from 'react-select';
 import { InputLabel } from '@/components/Inputs/InputLabel';
+import classNames from 'classnames';
 
-export const SelectInput = ({ label, options, name, defaultValue }) => {
+export const SelectInput = ({ label, options, name, defaultValue, className = '' }) => {
   const {
     field: { onChange, value },
   } = useController({ name, defaultValue });
 
   return (
-    <div>
+    <div className={className}>
       <InputLabel label="Rooms count" />
       <Select
         defaultValue={defaultValue ?? options[0]}
         onChange={({ value }) => onChange(value)}
         options={options}
-        className="mt-2 h-9"
+        className={classNames('mt-2 h-9')}
         styles={{
           control: (baseStyles, state) => ({
             ...baseStyles,

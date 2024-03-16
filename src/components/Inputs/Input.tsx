@@ -3,6 +3,7 @@ import { useFormContext } from 'react-hook-form';
 import { InputLabel } from '@/components/Inputs/InputLabel';
 
 import classNames from 'classnames';
+import { ErrorMessage } from '@hookform/error-message';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -20,7 +21,10 @@ export const Input = ({
   icon,
   ...props
 }: InputProps) => {
-  const { register } = useFormContext();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
 
   return (
     <div className={wrapperClassName}>
@@ -40,6 +44,11 @@ export const Input = ({
           {...props}
         />
       </div>
+      <ErrorMessage
+        errors={errors}
+        name={name}
+        render={({ message }) => <p className="text-red-300">{message}</p>}
+      />
     </div>
   );
 };

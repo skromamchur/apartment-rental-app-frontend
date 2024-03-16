@@ -1,5 +1,8 @@
 import axiosClient from '@/api/config/axios';
 import { API_ROUTES } from '@/constants/routes/ApiRoutes';
+import { getDownloadURL, getStorage, ref, uploadBytes } from '@firebase/storage';
+import { firebaseApp } from '@/config/firebase';
+import { generateUUID } from '@/utils/GenerateUUID';
 
 export const getApartment = async ({ id }: { id: number }) => {
   const { data } = await axiosClient.get(`/apartments/${id}`);
@@ -55,29 +58,48 @@ export const createApartment = async ({
   features,
 }) => {
   try {
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('price', price);
-    formData.append('floorNumber', floorNumber);
-    formData.append('totalFloors', totalFloors);
-    formData.append('locationId', locationId);
-    formData.append('rooms', rooms);
-    formData.append('square', square);
-    formData.append('type', type);
+    // const formData = new FormData();
+    // formData.append('title', title);
+    // formData.append('description', description);
+    // formData.append('price', price);
+    // formData.append('floorNumber', floorNumber);
+    // formData.append('totalFloors', totalFloors);
+    // formData.append('locationId', locationId);
+    // formData.append('rooms', rooms);
+    // formData.append('square', square);
+    // formData.append('type', 'month');
 
-    Array.from(photos).forEach((photo: Blob) => {
-      formData.append(`photos`, photo, photo.name);
+    const photosLinksPromises = Array.from(photos).map(async (photo: Blob) => {
+      const storage = getStorage(firebaseApp);
+      const storageRef = ref(storage, `/apartments/${generateUUID()}`);
+
+      await uploadBytes(storageRef, photo);
+
+      return await getDownloadURL(storageRef);
     });
 
-    features.forEach((feature) => {
-      formData.append('features', feature);
-    });
+    const photosLinks = await Promise.all(photosLinksPromises);
 
-    const response = await axiosClient.post(API_ROUTES.CREATE_APARTMENT, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+    // features.forEach((feature) => {
+    //   formData.append('features', feature);
+    // });
+    //
+    // photosLinks.forEach((photoLink) => {
+    //   formData.append('photo', photoLink);
+    // });
+
+    const response = await axiosClient.post(API_ROUTES.CREATE_APARTMENT, {
+      photos: photosLinks,
+      title,
+      description,
+      price,
+      floorNumber,
+      totalFloors,
+      locationId,
+      rooms,
+      square,
+      type: 'month',
+      features,
     });
 
     return response.data;

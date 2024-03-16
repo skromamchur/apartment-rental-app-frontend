@@ -2,7 +2,7 @@ import { Input } from '@/components/Inputs/Input';
 import { useFormContext } from 'react-hook-form';
 import axiosClient from '@/api/config/axios';
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { UserContext } from '@/contexts/UserContext';
 import { Button } from '@/components/Button';
 
@@ -11,9 +11,12 @@ export const SignInForm = () => {
 
   const { getUser } = useContext(UserContext);
 
+  const [invalidCredentialsError, setInvalidCredentialsError] = useState<boolean>(false);
+
   const router = useRouter();
 
   const onSignInSubmit = async ({ email, password }: { email: string; password: string }) => {
+    setInvalidCredentialsError(false);
     console.log(email);
     console.log(password);
 
@@ -29,7 +32,7 @@ export const SignInForm = () => {
 
       router.push('/');
     } catch (err) {
-      console.log(err);
+      setInvalidCredentialsError(true);
     }
   };
 
@@ -81,6 +84,8 @@ export const SignInForm = () => {
             Sign in
           </Button>
         </div>
+
+        {invalidCredentialsError && <p className="mt-4 text-red-600">Invalid credentials</p>}
       </form>
     </div>
   );

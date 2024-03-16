@@ -45,7 +45,7 @@ const ApartmentPage = ({
 }) => {
   const router = useRouter();
 
-  const { connections, id: profileId } = useContext(UserContext);
+  const { connections, id: profileId, isAuth } = useContext(UserContext);
 
   return (
     <div
@@ -88,9 +88,9 @@ const ApartmentPage = ({
           <ApartmentPageDescription description={description} />
           <ApartmentPageLocationInformation lat={lat} lng={lng} />
           <ApartmentPageFeatures featuresNames={features.map((feature) => feature.name)} />
-          <ReviewList reviews={reviews} />
+          {reviews.length > 0 && <ReviewList reviews={reviews} />}
 
-          <ReviewTextArea id={id} />
+          {isAuth && <ReviewTextArea id={id} />}
         </div>
         <div className="w-[260px] mt-[132px]">
           <div className="bg-white border border-opacity-10 py-5 px-10 flex flex-col items-center">

@@ -53,7 +53,7 @@ export const ApartmentPageCarousel = ({ photos }) => {
       {photos.map((photo) => {
         return (
           <div className="h-[650px]">
-            <img src={photo.filename} className="h-full object-cover" />
+            <img src={photo} className="h-full object-cover" />
           </div>
         );
       })}

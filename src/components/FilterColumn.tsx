@@ -22,7 +22,7 @@ const RegionFilter = ({ states }) => {
   const { state: activeState, handleStateChange } = useContext(FilterContext);
 
   return (
-    <Disclosure as="div" className="border-t border-gray-200 py-6">
+    <Disclosure as="div" className="border-gray-200 py-6">
       {({ open }) => (
         <>
           <h3 className="-mx-2 -my-3 flow-root">
@@ -69,6 +69,8 @@ const RegionFilter = ({ states }) => {
 };
 
 const CitiesFilter = ({ cities }) => {
+  if (!cities.length) return null;
+
   const { city: activeCity, handleCityChange } = useContext(FilterContext);
 
   return (
@@ -248,7 +250,7 @@ export const FilterColumn = () => {
         </Transition.Root>
 
         <main className="mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
+          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-6">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
               {apartmentsCount > 0 ? `${apartmentsCount} results found` : ''}
             </h1>
@@ -317,7 +319,7 @@ export const FilterColumn = () => {
             </div>
           </div>
 
-          <section aria-labelledby="products-heading" className="pb-24 pt-6">
+          <section aria-labelledby="products-heading" className="pt-6">
             <h2 id="products-heading" className="sr-only">
               Products
             </h2>

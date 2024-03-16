@@ -5,9 +5,10 @@ import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import { UserContext } from '@/contexts/UserContext';
 import { Button } from '@/components/Button';
+import { AxiosError } from 'axios';
 
 export const SignUpForm = () => {
-  const { handleSubmit } = useFormContext();
+  const { handleSubmit, setError } = useFormContext();
 
   const { getUser } = useContext(UserContext);
 
@@ -45,8 +46,16 @@ export const SignUpForm = () => {
       await getUser();
 
       router.push('/');
-    } catch (err) {
-      console.log(err);
+    } catch (err: AxiosError) {
+      if (err.response.status === 403) {
+        console.log(err.response);
+        setError('email', {
+          type: 'manual',
+          message: err.response.data.error,
+        });
+      } else {
+        console.log(err);
+      }
     }
   };
 

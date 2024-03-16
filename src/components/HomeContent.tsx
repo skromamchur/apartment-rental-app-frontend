@@ -64,7 +64,7 @@ export const HomeContent = ({ onChangeCount, onChangeCities, onChangeStates }) =
   }, [apartments]);
 
   return (
-    <div className="mx-auto w-full">
+    <div className="mx-auto w-full bg-gray-50 py-4">
       <div
         className={classNames(
           `w-full px-2 xl:px-0 max-w-[1280px] mx-auto`,
@@ -80,7 +80,7 @@ export const HomeContent = ({ onChangeCount, onChangeCities, onChangeStates }) =
             {apartments.apartments.map((ap) => {
               return (
                 <FlatCard
-                  photo={ap.photos.length ? ap.photos[0].filename : ''}
+                  photo={ap.photos.length ? ap.photos[0] : ''}
                   price={ap.price}
                   city={ap.city}
                   street={ap.street}

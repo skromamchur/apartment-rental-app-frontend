@@ -15,20 +15,21 @@ const options = [
 
 export const GeneralInformation = () => {
   return (
-    <FormCard>
+    <div className="bg-white px-4 py-5 sm:px-6 rounded-t-[20px]">
       <h3 className="text-base font-semibold leading-6 text-gray-900">General Information</h3>
       <div className="mt-4 space-y-4">
-        <div className="flex flex-col">
-          <InputLabel label="Date/month" />
-          <NewSelect options={options} name="type" />
-        </div>
+        {/*<div className="flex flex-col">*/}
+        {/*  <InputLabel label="Date/month" />*/}
+        {/*  <NewSelect options={options} name="type" />*/}
+        {/*</div>*/}
         <Input label="Title" name="title" />
         <TextareaInput label="Description" name="description" />
-        <div className="grid grid-cols-6 gap-x-4">
-          <CreatePagePriceInput />
+        <CreatePagePriceInput />
+        <div className="flex flex-row space-x-4">
           <Input
             label="Square"
             name="square"
+            wrapperClassName="flex-1"
             isIcon
             icon={
               <svg
@@ -59,10 +60,14 @@ export const GeneralInformation = () => {
             options={ROOMS_COUNT_OPTIONS.map((option) => ({ value: option, label: option }))}
             name="rooms"
             defaultValue={1}
+            className="flex-1"
           />
+        </div>
+        <div className="space-x-4 flex flex-row">
           <Input
             label="Floor location"
             name="floorNumber"
+            wrapperClassName="flex-1"
             isIcon
             icon={
               <svg
@@ -85,6 +90,7 @@ export const GeneralInformation = () => {
           <Input
             label="Floor total"
             name="totalFloors"
+            wrapperClassName="flex-1"
             isIcon
             icon={
               <svg
@@ -112,6 +118,6 @@ export const GeneralInformation = () => {
           />
         </div>
       </div>
-    </FormCard>
+    </div>
   );
 };

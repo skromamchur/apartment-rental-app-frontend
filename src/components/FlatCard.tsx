@@ -76,7 +76,7 @@ export const FlatCard = ({
   return (
     <div
       className={classNames([
-        'bg-white border border-black border-opacity-10 shrink-0 p-[10px] cursor-pointer max-w-[305px]',
+        'bg-white border border-black border-opacity-10 shrink-0 p-[10px] cursor-pointer max-w-[305px] shadow-sm',
         roboto.className,
         wrapperClassName,
       ])}

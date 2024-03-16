@@ -25,15 +25,12 @@ export const Header = () => {
   const router = useRouter();
 
   return (
-    <header className="bg-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] min-h-[60px]">
-      <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 xl:px-0"
-        aria-label="Global"
-      >
+    <header className="bg-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] min-h-[60px] border-b border-gray-200">
+      <nav className="mx-auto flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <NextLink href={APP_ROUTES.HOME}>
+          <NextImage src="/logo.svg" width="48" height="32" alt="" />
+        </NextLink>
         <div className="flex items-center gap-x-12">
-          <NextLink href={APP_ROUTES.HOME}>
-            <NextImage src="/logo.svg" width="48" height="32" alt="" />
-          </NextLink>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
               <a

@@ -32,13 +32,13 @@ const GoogleMapElement = React.memo(
           ref={parentRef}
         >
           <GoogleMap
-            zoom={10}
+            zoom={6}
             mapContainerClassName="map"
             mapContainerStyle={{ width: '100%', height: '600px', margin: 'auto' }}
             ref={mapRef}
             center={{
-              lat: 49.8397,
-              lng: 24.0297,
+              lat: 51.8397,
+              lng: 23.0297,
             }}
           >
             {apartments.map((ap) => {
@@ -94,7 +94,7 @@ export const MapOfAvailableArticles = ({ apartments }) => {
           }}
         >
           <FlatCard
-            photo={ap.photos.length ? ap.photos[0].filename : ''}
+            photo={ap.photos.length ? ap.photos[0] : ''}
             price={ap.price}
             city={ap.city}
             street={ap.street}
