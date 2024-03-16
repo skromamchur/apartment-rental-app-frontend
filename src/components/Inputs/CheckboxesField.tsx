@@ -51,7 +51,6 @@ export const CheckboxesField = ({ checkboxesOptions, value, onChange }: Checkbox
         <div key={option.value} className="flex items-center">
           <div className="flex h-6 items-center">
             <CheckBoxInput
-              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
               onClick={() => {
                 const tempValue = value.includes(option.value);
                 if (!tempValue) {

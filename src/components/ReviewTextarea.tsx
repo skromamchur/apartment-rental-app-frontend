@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { FormCard } from '@/components/FormCard';
 import axiosClient from '@/api/config/axios';
 import { UserAvatar } from '@/components/UserAvatar';
+import { UserContext } from '@/contexts/UserContext';
 
 export const ReviewTextArea = ({ id }: { id: number }) => {
   const [message, setMessage] = useState<string>('');
+
+  const { avatar } = useContext(UserContext);
 
   const onSubmit = async () => {
     await axiosClient.post(`/reviews/${id}`, {
@@ -18,7 +21,7 @@ export const ReviewTextArea = ({ id }: { id: number }) => {
     <FormCard>
       <div className="flex items-start space-x-4">
         <div className="flex-shrink-0">
-          <UserAvatar />
+          <UserAvatar avatar={avatar} />
         </div>
         <div className="min-w-0 flex-1">
           <form action="#" className="relative">

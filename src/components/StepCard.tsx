@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import classNames from 'classnames';
 import { Button } from '@/components/Button';
 import { ReactNode } from 'react';

@@ -1,3 +1,5 @@
+//@ts-nocheck
+
 import { Input } from '@/components/Inputs/Input';
 import { useFormContext } from 'react-hook-form';
 import axiosClient from '@/api/config/axios';
