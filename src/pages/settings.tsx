@@ -9,6 +9,8 @@ import { SettingsAvatarInput } from '@/components/SettingsPage/SettingsAvatarInp
 import axiosClient from '@/api/config/axios';
 import { Header } from '@/components/Layout/Header';
 import { Button } from '@/components/Button';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Example() {
   const { firstName, lastName, email, avatar, phone } = useContext(UserContext);
@@ -25,12 +27,17 @@ export default function Example() {
 
   const onSubmit = async (data) => {
     await axiosClient.put('/auth/profile', data);
+
+    toast.success('Successfully updated!', {
+      position: 'top-right',
+    });
   };
 
   return (
     <FormProvider {...methods}>
       <div className="flex h-full flex-col">
         <Header />
+        <ToastContainer hideProgressBar />
         <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
           <main className="flex flex-1 overflow-hidden">
             <div className="flex flex-1 flex-col overflow-y-auto xl:overflow-hidden">

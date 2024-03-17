@@ -21,12 +21,12 @@ export const Chat = () => {
 
   return (
     <div className="flex flex-1 border border-t">
-      {dialogs.length && (
-        <div className="flex flex-row justify-between bg-white flex-1">
-          <ListOfContacts contacts={dialogs.map((d) => d.with)} />
-          <ChatField messages={dialogs[currentChatIndex].messages} />
-        </div>
-      )}
+      {/*{dialogs.length && (*/}
+      {/*  <div className="flex flex-row justify-between bg-white flex-1">*/}
+      {/*    <ListOfContacts contacts={dialogs.map((d) => d.with)} />*/}
+      {/*    <ChatField messages={dialogs[currentChatIndex].messages} />*/}
+      {/*  </div>*/}
+      {/*)}*/}
     </div>
   );
 };

@@ -17,9 +17,8 @@ const CheckBoxInput = ({
   return (
     <div
       className={classNames(
-        'w-6 h-6 min-w-[24px] min-h-[24px] rounded-md flex items-center justify-center cursor-pointer border border-primary transition-all duration-300',
-        checked && 'bg-primary',
-        !checked && '',
+        'w-5 h-5 rounded-3 border border-opacity-30 rounded-[3px] cursor-pointer items-center justify-center flex',
+        { 'bg-red-500': checked },
       )}
       onClick={onClick}
     >

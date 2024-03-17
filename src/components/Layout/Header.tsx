@@ -14,8 +14,127 @@ const navigation = [
   { name: 'All apartments', href: '/' },
   { name: 'Month rental', href: '/?type=month' },
   { name: 'Daily rental', href: '/?type=daily' },
-  { name: 'Settings', href: '/settings' },
+  { name: 'Room rental', href: '/settings' },
+  { name: 'Co-renting', href: '/settings' },
 ];
+
+const HeaderIcon = ({ children, onClick }) => {
+  return (
+    <div
+      className="w-12 h-12 rounded-full bg-[#f2f2f2] flex items-center justify-center hover:bg-gray-300 cursor-pointer"
+      onClick={onClick}
+    >
+      {children}
+    </div>
+  );
+};
+
+const Logout = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="#000000"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+    <path d="M9 12h12l-3 -3" />
+    <path d="M18 15l3 -3" />
+  </svg>
+);
+
+const Icons = () => {
+  const router = useRouter();
+
+  const { logOut, isAuth } = useContext(UserContext);
+
+  if (!isAuth) return null;
+  return (
+    <div className="flex flex-row space-x-4">
+      <HeaderIcon
+        onClick={() => {
+          router.push(APP_ROUTES.CREATE);
+        }}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="icon icon-tabler icon-tabler-circle-plus"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#000000"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+          <path d="M9 12h6" />
+          <path d="M12 9v6" />
+        </svg>
+      </HeaderIcon>
+      <HeaderIcon
+        onClick={() => {
+          router.push(APP_ROUTES.PROFILE);
+        }}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="icon icon-tabler icon-tabler-user-circle"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#000000"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+          <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+          <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+        </svg>
+      </HeaderIcon>
+      <HeaderIcon
+        onClick={() => {
+          router.push(APP_ROUTES.CHATS);
+        }}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="icon icon-tabler icon-tabler-message"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="#000000"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M8 9h8" />
+          <path d="M8 13h6" />
+          <path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z" />
+        </svg>
+      </HeaderIcon>
+      <HeaderIcon
+        onClick={() => {
+          logOut();
+        }}
+      >
+        <Logout />
+      </HeaderIcon>
+    </div>
+  );
+};
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -27,9 +146,12 @@ export const Header = () => {
   return (
     <header className="bg-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] min-h-[60px] border-b border-gray-200">
       <nav className="mx-auto flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-        <NextLink href={APP_ROUTES.HOME}>
-          <NextImage src="/logo.svg" width="48" height="32" alt="" />
-        </NextLink>
+        <div className="flex flex-row space-x-3 items-center justify-center">
+          <UserAvatar size="small" />
+          <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
+            {firstName} {lastName}
+          </p>
+        </div>
         <div className="flex items-center gap-x-12">
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
@@ -54,33 +176,24 @@ export const Header = () => {
           </button>
         </div>
         <div className="hidden lg:flex">
-          {isAuth && (
-            <a href="#" className="group block flex-shrink-0 mr-4 ">
-              <div className="flex items-center space-x-2">
-                <div className="ml-3">
-                  <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
-                    {firstName} {lastName}
-                  </p>
-                </div>
-                <div>
-                  <UserAvatar avatar={avatar} />
-                </div>
-              </div>
-            </a>
+          <div className="flex flex-row space-x-4">
+            <Icons />
+          </div>
+          {!isAuth && (
+            <button
+              onClick={() => {
+                console.log(isAuth);
+                if (isAuth) {
+                  logOut();
+                } else {
+                  router.push('/sign-in');
+                }
+              }}
+              className="text-sm font-semibold leading-6 text-gray-900"
+            >
+              {isAuth ? 'Log out' : 'Log in'} <span aria-hidden="true">&rarr;</span>
+            </button>
           )}
-          <button
-            onClick={() => {
-              console.log(isAuth);
-              if (isAuth) {
-                logOut();
-              } else {
-                router.push('/sign-in');
-              }
-            }}
-            className="text-sm font-semibold leading-6 text-gray-900"
-          >
-            {isAuth ? 'Log out' : 'Log in'} <span aria-hidden="true">&rarr;</span>
-          </button>
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -113,12 +226,7 @@ export const Header = () => {
                 ))}
               </div>
               <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  {isAuth ? 'Log out' : 'Log in'}
-                </a>
+                <Icons />
               </div>
             </div>
           </div>

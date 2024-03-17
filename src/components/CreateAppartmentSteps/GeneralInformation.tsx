@@ -18,10 +18,10 @@ export const GeneralInformation = () => {
     <div className="bg-white px-4 py-5 sm:px-6 rounded-t-[20px]">
       <h3 className="text-base font-semibold leading-6 text-gray-900">General Information</h3>
       <div className="mt-4 space-y-4">
-        {/*<div className="flex flex-col">*/}
-        {/*  <InputLabel label="Date/month" />*/}
-        {/*  <NewSelect options={options} name="type" />*/}
-        {/*</div>*/}
+        <div className="flex flex-col">
+          <InputLabel label="Type of advertisement" />
+          <NewSelect options={options} name="type" />
+        </div>
         <Input label="Title" name="title" />
         <TextareaInput label="Description" name="description" />
         <CreatePagePriceInput />

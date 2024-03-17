@@ -12,6 +12,12 @@ import { createApartment } from '@/api/apartments';
 import { Button } from '@/components/Button';
 import { useState } from 'react';
 
+import { toast, ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router';
+import { APP_ROUTES } from '@/constants/routes/AppRoutes';
+
 const inter = Roboto({ subsets: ['latin'], weight: ['100', '300', '400', '500', '700'] });
 
 const Create = () => {
@@ -19,16 +25,25 @@ const Create = () => {
 
   const [step, setStep] = useState<number>(0);
 
+  const router = useRouter();
+
   const onSubmit = async (data) => {
     console.log(data);
 
-    await createApartment(data);
+    const result = await createApartment(data);
+
+    toast.success('Advertisement successfully created!', {
+      position: 'top-right',
+    });
+
+    router.push(APP_ROUTES.APARTMENT(result.id));
   };
 
   return (
     <div
       className={`flex min-h-screen flex-col bg-[#F8F8F8] w-screen overflow-hidden pb-20 ${inter.className}`}
     >
+      <ToastContainer hideProgressBar />
       <Header />
       <div className="mx-auto max-w-[900px] w-full mt-8">
         <div className="space-y-10">

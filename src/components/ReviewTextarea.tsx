@@ -3,6 +3,9 @@ import { FormCard } from '@/components/FormCard';
 import axiosClient from '@/api/config/axios';
 import { UserAvatar } from '@/components/UserAvatar';
 import { UserContext } from '@/contexts/UserContext';
+import { Button } from '@/components/Button';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ReviewTextArea = ({ id }: { id: number }) => {
   const [message, setMessage] = useState<string>('');
@@ -15,10 +18,15 @@ export const ReviewTextArea = ({ id }: { id: number }) => {
       text: message,
     });
     setMessage('');
+
+    toast.success('Your review successfully saved!', {
+      position: 'top-right',
+    });
   };
 
   return (
     <FormCard>
+      <ToastContainer hideProgressBar />
       <div className="flex items-start space-x-4">
         <div className="flex-shrink-0">
           <UserAvatar avatar={avatar} />
@@ -37,6 +45,7 @@ export const ReviewTextArea = ({ id }: { id: number }) => {
                 placeholder="Add your comment..."
                 defaultValue={''}
                 onChange={(e) => setMessage(e.target.value)}
+                value={message}
               />
 
               <div className="py-2" aria-hidden="true">
@@ -47,18 +56,15 @@ export const ReviewTextArea = ({ id }: { id: number }) => {
             </div>
 
             <div className="absolute inset-x-0 bottom-0 flex justify-end py-2 pl-3 pr-2">
-              <div className="flex-shrink-0">
-                <button
-                  type="button"
-                  onClick={onSubmit}
-                  className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  Post
-                </button>
-              </div>
+              <div className="flex-shrink-0"></div>
             </div>
           </form>
         </div>
+      </div>
+      <div className="mt-4 flex justify-end">
+        <Button type="button" onClick={onSubmit}>
+          Post
+        </Button>
       </div>
     </FormCard>
   );

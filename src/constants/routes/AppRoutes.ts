@@ -4,4 +4,6 @@ export const APP_ROUTES = {
   SIGN_UP: '/sign-up',
   CREATE: '/create',
   CHATS: '/chats',
+  PROFILE: '/settings',
+  APARTMENT: (id: any) => `/apartment/${id}`,
 };
