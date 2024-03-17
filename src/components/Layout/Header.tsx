@@ -147,7 +147,7 @@ export const Header = () => {
     <header className="bg-white shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] min-h-[60px] border-b border-gray-200">
       <nav className="mx-auto flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex flex-row space-x-3 items-center justify-center">
-          <UserAvatar size="small" />
+          <UserAvatar size="small" avatar={avatar} />
           <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">
             {firstName} {lastName}
           </p>
