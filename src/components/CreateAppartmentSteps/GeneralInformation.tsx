@@ -9,8 +9,10 @@ import { CreatePagePriceInput } from '@/components/Inputs/CreatePagePriceInput';
 import { InputLabel } from '@/components/Inputs/InputLabel';
 
 const options = [
-  { value: 'day', label: 'Day' },
-  { value: 'month', label: 'Month' },
+  { value: 'day', label: 'Day rental' },
+  { value: 'month', label: 'Month rental' },
+  { value: 'room', label: 'Room rental' },
+  { value: 'co-renting', label: 'Co-renting' },
 ];
 
 export const GeneralInformation = () => {

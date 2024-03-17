@@ -15,6 +15,8 @@ export const APARTMENT_FILTERS = [
     options: [
       { value: 'month', label: 'Month' },
       { value: 'day', label: 'Day' },
+      { value: 'room', label: 'Room' },
+      { value: 'co-rental', label: 'Co-rental' },
     ],
     type: 'checkboxes',
   },

@@ -98,7 +98,7 @@ export const createApartment = async ({
       locationId,
       rooms,
       square,
-      type: 'month',
+      type,
       features,
     });
 

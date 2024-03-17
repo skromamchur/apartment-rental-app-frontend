@@ -1,4 +1,4 @@
-export type ApartmentDealType = 'day' | 'month';
+export type ApartmentDealType = 'day' | 'month' | 'room' | 'co-renting';
 
 export type ApartmentSortType =
   | 'DATE'
