@@ -14,8 +14,8 @@ const navigation = [
   { name: 'All apartments', href: '/' },
   { name: 'Month rental', href: '/?type=month' },
   { name: 'Daily rental', href: '/?type=daily' },
-  { name: 'Room rental', href: '/settings' },
-  { name: 'Co-renting', href: '/settings' },
+  { name: 'Room rental', href: '/?type=room' },
+  { name: 'Co-renting', href: '/?type=co-renting' },
 ];
 
 const HeaderIcon = ({ children, onClick }) => {

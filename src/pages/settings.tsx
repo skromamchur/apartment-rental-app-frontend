@@ -12,6 +12,10 @@ import { Button } from '@/components/Button';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { getDownloadURL, getStorage, ref, uploadString, uploadBytes } from '@firebase/storage';
+import { generateUUID } from '@/utils/GenerateUUID';
+import { firebaseApp } from '@/config/firebase';
+
 export default function Example() {
   const { firstName, lastName, email, avatar, phone } = useContext(UserContext);
 
@@ -26,8 +30,26 @@ export default function Example() {
   });
 
   const onSubmit = async (data) => {
-    await axiosClient.put('/auth/profile', data);
+    if (data.avatar) {
+      const storage = getStorage(firebaseApp);
+      const storageRef = ref(storage, `/avatars/${generateUUID()}`);
 
+      const base64Image = data.avatar;
+
+      const byteArray = Uint8Array.from(atob(base64Image.split(',')[1]), (c) => c.charCodeAt(0));
+      const imageBlob = new Blob([byteArray]);
+
+      await uploadBytes(storageRef, imageBlob);
+
+      const firebaseAvatar = await getDownloadURL(storageRef);
+
+      await axiosClient.put('/auth/profile', {
+        ...data,
+        avatar: firebaseAvatar,
+      });
+    } else {
+      await axiosClient.put('/auth/profile', data);
+    }
     toast.success('Successfully updated!', {
       position: 'top-right',
     });

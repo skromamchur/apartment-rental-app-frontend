@@ -1,4 +1,4 @@
-import {createContext, useEffect, useState} from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { ROOMS_COUNT_OPTIONS } from '@/constants/RoomsCountOptions';
 import { ApartmentDealType, ApartmentSortType } from '@/types/Apartament';
 
@@ -11,8 +11,8 @@ interface FilterContextInterface {
   minFloor: number;
   maxFloor: number;
   roomsCount: number[];
-  state : string;
-  city : string;
+  state: string;
+  city: string;
   type: ApartmentDealType[];
   sortType: ApartmentSortType;
   handleSearchChange: (value: string) => void;
@@ -25,8 +25,8 @@ interface FilterContextInterface {
   handleRoomsCountChange: (value: number[]) => void;
   handleTypeChange: (value: ApartmentDealType[]) => void;
   handleApartmentSortOptionChange: (value: ApartmentSortType) => void;
-  handleStateChange: (value : string) => void;
-  handleCityChange: (value : string) => void;
+  handleStateChange: (value: string) => void;
+  handleCityChange: (value: string) => void;
 }
 
 export const FilterContext = createContext<FilterContextInterface>(null);
@@ -40,14 +40,14 @@ export const FilterProvider = ({ children }) => {
   const [minFloor, setMinFloor] = useState(0);
   const [maxFloor, setMaxFloor] = useState(100);
   const [roomsCount, setRoomsCount] = useState<number[]>(ROOMS_COUNT_OPTIONS);
-  const [type, setType] = useState<ApartmentDealType[]>(['day', 'month']);
+  const [type, setType] = useState<ApartmentDealType[]>(['day', 'month', 'room', 'co-renting']);
   const [sortType, setSortType] = useState<ApartmentSortType>('DATE');
-  const [state, setState] = useState('')
+  const [state, setState] = useState('');
   const [city, setCity] = useState('');
-  
+
   useEffect(() => {
-    setCity('')
-  },[state])
+    setCity('');
+  }, [state]);
 
   return (
     <FilterContext.Provider
@@ -74,8 +74,8 @@ export const FilterProvider = ({ children }) => {
         handleRoomsCountChange: (value: number[]) => setRoomsCount(value),
         handleTypeChange: (value: ApartmentDealType[]) => setType(value),
         handleApartmentSortOptionChange: (value: ApartmentSortType) => setSortType(value),
-        handleStateChange: (value : string) => setState(value),
-        handleCityChange: (value : string) => setCity(value)
+        handleStateChange: (value: string) => setState(value),
+        handleCityChange: (value: string) => setCity(value),
       }}
     >
       {children}

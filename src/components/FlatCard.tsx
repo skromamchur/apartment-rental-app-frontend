@@ -76,7 +76,7 @@ export const FlatCard = ({
   return (
     <div
       className={classNames([
-        'bg-white border border-black border-opacity-10 shrink-0 p-[10px] cursor-pointer max-w-[305px] shadow-sm',
+        'bg-white relative border border-black border-opacity-10 shrink-0 p-[10px] cursor-pointer max-w-[305px] shadow-sm',
         roboto.className,
         wrapperClassName,
       ])}
@@ -84,6 +84,9 @@ export const FlatCard = ({
         router.push(`/apartment/${id}`);
       }}
     >
+      <div className="absolute top-6 right-6 bg-white rounded-md z-[7] p-1 text-xs">
+        {type[0].toUpperCase() + type.slice(1)}
+      </div>
       <div className="w-full aspect-[265/165] relative">
         {photo && <NextImage src={photo} objectFit="cover" layout="fill" alt="" />}
       </div>
