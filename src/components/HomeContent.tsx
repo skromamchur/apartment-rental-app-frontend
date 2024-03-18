@@ -64,7 +64,7 @@ export const HomeContent = ({ onChangeCount, onChangeCities, onChangeStates }) =
   }, [apartments]);
 
   return (
-    <div className="mx-auto w-full bg-gray-50 py-4">
+    <div className="mx-auto w-full bg-gray-50 py-4 px-2">
       <div
         className={classNames(
           `w-full px-2 xl:px-0 max-w-[1280px] mx-auto`,
