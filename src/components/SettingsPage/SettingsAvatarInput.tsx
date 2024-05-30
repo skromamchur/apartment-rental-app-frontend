@@ -104,10 +104,10 @@ export const SettingsAvatarInput = () => {
                         variant="secondary"
                         className="min-w-[80px] mx-0"
                       >
-                        Cancel
+                        Скасувати
                       </Button>
                       <Button type="button" onClick={onSave} className="min-w-[80px] mx-0">
-                        Save
+                        Зберегти
                       </Button>
                     </div>
                   </Dialog.Panel>
@@ -119,7 +119,7 @@ export const SettingsAvatarInput = () => {
       )}
       <div className="sm:col-span-6">
         <label htmlFor="photo" className="block text-sm font-medium leading-6 text-slate-900">
-          Photo
+          Фотографія
         </label>
         <div className="mt-2 flex items-center">
           <img
@@ -139,7 +139,7 @@ export const SettingsAvatarInput = () => {
               htmlFor="user-photo"
               className="pointer-events-none block rounded-md bg-white px-3 py-2 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 peer-hover:bg-slate-50 peer-focus:ring-2 peer-focus:ring-blue-600"
             >
-              <span>Change</span>
+              <span>Змінити</span>
             </label>
           </div>
           {value && (
@@ -148,7 +148,7 @@ export const SettingsAvatarInput = () => {
               className="ml-6 text-sm font-medium leading-6 text-slate-900"
               onClick={onDeleteAvatar}
             >
-              Remove
+              Видалити
             </button>
           )}
         </div>

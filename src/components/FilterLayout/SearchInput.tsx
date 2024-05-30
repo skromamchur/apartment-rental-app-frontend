@@ -13,7 +13,7 @@ export const SearchInput = () => {
       <input
         type="text"
         className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:outline-none"
-        placeholder="Search..."
+        placeholder="Пошук..."
         required
         onChange={(event) => handleSearchChange(event.target.value)}
       />

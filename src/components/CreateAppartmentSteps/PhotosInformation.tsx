@@ -36,7 +36,7 @@ const EmptyState = () => (
         fill="#E02828"
       />
     </svg>
-    <span>You can add 30 photos to your ad</span>
+    <span>Ви можете додати до 20 фотографій до вашого оголошення</span>
   </>
 );
 
@@ -79,7 +79,7 @@ export const PhotosInformation = () => {
 
   return (
     <FormCard>
-      <h3 className="text-base font-semibold leading-6 text-gray-900">Posting Photos</h3>
+      <h3 className="text-base font-semibold leading-6 text-gray-900">Фотографії</h3>
       <div className="flex flex-col justify-center items-center mt-5 mb-8 space-y-[15px]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +99,7 @@ export const PhotosInformation = () => {
             fill-opacity="0.5"
           />
         </svg>
-        <span>You can add 30 photos to your ad</span>
+        <span>Ви можете додати до 20 фотографій до вашого оголошення</span>
         <button
           className="flex flex-row space-x-[13px] bg-[#E02828] rounded-[5px] text-white items-center justify-center py-[10px] px-4"
           onClick={triggerFileModal}
@@ -131,7 +131,7 @@ export const PhotosInformation = () => {
               </clipPath>
             </defs>
           </svg>
-          <span>Download From Computer</span>
+          <span>Завантажити з комп'ютера</span>
         </button>
       </div>
       <div

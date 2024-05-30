@@ -21,7 +21,7 @@ const RegionFilter = ({ states }) => {
         <>
           <h3 className="-mx-2 -my-3 flow-root">
             <Disclosure.Button className="flex w-full text-sm items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
-              <span className="font-medium text-gray-900">Region</span>
+              <span className="font-medium text-gray-900">Область</span>
               <span className="ml-6 flex items-center">
                 {open ? (
                   <MinusIcon className="h-5 w-5" aria-hidden="true" />
@@ -73,7 +73,7 @@ const CitiesFilter = ({ cities }) => {
         <>
           <h3 className="-mx-2 -my-3 flow-root">
             <Disclosure.Button className="flex w-full text-sm items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
-              <span className="font-medium text-gray-900">City</span>
+              <span className="font-medium text-gray-900">Місто</span>
               <span className="ml-6 flex items-center">
                 {open ? (
                   <MinusIcon className="h-5 w-5" aria-hidden="true" />
@@ -216,7 +216,7 @@ export const FilterColumn = () => {
                         <>
                           <h3 className="-mx-2 -my-3 flow-root">
                             <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
-                              <span className="font-medium text-gray-900">Region</span>
+                              <span className="font-medium text-gray-900">Область</span>
                               <span className="ml-6 flex items-center">
                                 {open ? (
                                   <MinusIcon className="h-5 w-5" aria-hidden="true" />
@@ -245,15 +245,15 @@ export const FilterColumn = () => {
 
         <main className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-6">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              {apartmentsCount > 0 ? `${apartmentsCount} results found` : ''}
+            <h1 className="text-2xl font-bold tracking-tight text-gray-900">
+              {apartmentsCount > 0 ? `Знайдено ${apartmentsCount} оголошень` : ''}
             </h1>
             <SearchInput />
             <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
                 <div>
                   <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                    Sort
+                    Сортування
                     <ChevronDownIcon
                       className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
@@ -313,7 +313,7 @@ export const FilterColumn = () => {
 
             <div className="flex flex-col gap-x-8 gap-y-10 lg:flex-row">
               {/* Filters */}
-              <form className="hidden lg:block w-[300px]">
+              <form className="hidden lg:block w-[240px]">
                 {APARTMENT_FILTERS.map((section) => {
                   if (section.type === 'checkboxes') {
                     return (

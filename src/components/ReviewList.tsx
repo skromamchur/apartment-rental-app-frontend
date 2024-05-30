@@ -3,6 +3,9 @@ import { FormCard } from '@/components/FormCard';
 import { GetMessageTime } from '@/utils/GetMessageTime';
 
 import moment from 'moment';
+import 'moment/locale/uk';
+
+moment.locale('uk');
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -39,18 +42,18 @@ export const ReviewList = ({ reviews }) => {
                     <time dateTime={review.createdAt}>{moment(review.createdAt).fromNow()}</time>
                   </p>
 
-                  {/*<div className="mt-4 flex items-center">*/}
-                  {/*  {[0, 1, 2, 3, 4].map((rating) => (*/}
-                  {/*    <StarIcon*/}
-                  {/*      key={rating}*/}
-                  {/*      className={classNames(*/}
-                  {/*        review.rating > rating ? 'text-yellow-400' : 'text-gray-300',*/}
-                  {/*        'h-5 w-5 flex-shrink-0',*/}
-                  {/*      )}*/}
-                  {/*      aria-hidden="true"*/}
-                  {/*    />*/}
-                  {/*  ))}*/}
-                  {/*</div>*/}
+                  <div className="mt-4 flex items-center">
+                    {[0, 1, 2, 3, 4].map((rating) => (
+                      <StarIcon
+                        key={rating}
+                        className={classNames(
+                          review.rating > rating ? 'text-yellow-400' : 'text-gray-300',
+                          'h-5 w-5 flex-shrink-0',
+                        )}
+                        aria-hidden="true"
+                      />
+                    ))}
+                  </div>
                   <p className="sr-only">{review.rating} out of 5 stars</p>
 
                   <div className="prose prose-sm mt-4 max-w-none text-gray-500">{review.text}</div>

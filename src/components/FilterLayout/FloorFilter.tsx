@@ -9,7 +9,7 @@ export const FloorFilter = () => {
   return (
     <div className="flex flex-row space-x-4">
       <InputPrice
-        label="Min Floor"
+        label="Від"
         onChange={handleMinFloorChange}
         value={minFloor}
         icon={
@@ -33,7 +33,7 @@ export const FloorFilter = () => {
         }
       />
       <InputPrice
-        label="Max Floor"
+        label="До"
         onChange={handleMaxFloorChange}
         value={maxFloor}
         icon={

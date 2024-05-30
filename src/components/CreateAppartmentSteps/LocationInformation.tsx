@@ -6,7 +6,7 @@ import React from 'react';
 export const LocationInformation = () => {
   return (
     <FormCard>
-      <h3 className="text-base font-semibold leading-6 text-gray-900">Location Information</h3>
+      <h3 className="text-base font-semibold leading-6 text-gray-900">Розташування</h3>
       <GoogleMapInput />
     </FormCard>
   );

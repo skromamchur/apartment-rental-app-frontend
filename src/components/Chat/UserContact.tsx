@@ -25,7 +25,7 @@ export const UserContact = ({
         <div className="text-[#011627] font-semibold">
           {firstName} {lastName}
         </div>
-        <span className="text-gray-500 text-sm">{lastMessage}</span>
+        <span className="text-gray-500 text-sm line-clamp-1">{lastMessage}</span>
       </div>
     </div>
   );

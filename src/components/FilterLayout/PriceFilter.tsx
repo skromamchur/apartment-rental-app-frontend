@@ -9,13 +9,13 @@ export const PriceFilter = () => {
   return (
     <div className="flex flex-row space-x-4">
       <InputPrice
-        label="Min Price"
+        label="Від"
         onChange={handleMinPriceChange}
         value={minPrice}
         icon={<span className="text-gray-500 sm:text-sm">₴</span>}
       />
       <InputPrice
-        label="Max Price"
+        label="До"
         onChange={handleMaxPriceChange}
         value={maxPrice}
         icon={<span className="text-gray-500 sm:text-sm">₴</span>}

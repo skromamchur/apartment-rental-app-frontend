@@ -9,7 +9,7 @@ export const SquareFilter = () => {
   return (
     <div className="flex flex-row space-x-4">
       <InputPrice
-        label="Min Square"
+        label="Від"
         onChange={handleMinSquareChange}
         value={minSquare}
         icon={
@@ -37,7 +37,7 @@ export const SquareFilter = () => {
         }
       />
       <InputPrice
-        label="Max Square"
+        label="До"
         onChange={handleMaxSquareChange}
         value={maxSquare}
         icon={

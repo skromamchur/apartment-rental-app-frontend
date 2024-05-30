@@ -17,21 +17,22 @@ const options = [
 
 export const GeneralInformation = () => {
   return (
-    <div className="bg-white px-4 py-5 sm:px-6 rounded-t-[20px]">
-      <h3 className="text-base font-semibold leading-6 text-gray-900">General Information</h3>
+    <div className="bg-white p-8 sm:px-6 rounded-lg shadow">
+      <h3 className="text-base font-semibold leading-6 text-gray-900">Загальна Інформація</h3>
       <div className="mt-4 space-y-4">
         <div className="flex flex-col">
-          <InputLabel label="Type of advertisement" />
+          <InputLabel label="Тип угоди" />
           <NewSelect options={options} name="type" />
         </div>
-        <Input label="Title" name="title" />
-        <TextareaInput label="Description" name="description" />
+        <Input label="Заголовок" name="title" placeholder='Наприклад, "Здається 2-кімнатна квартира"'/>
+        <TextareaInput label="Опис" name="description" placeholder='Опишіть квартиру, розташування та зручності...'/>
         <CreatePagePriceInput />
         <div className="flex flex-row space-x-4">
           <Input
-            label="Square"
+            label="Площа"
             name="square"
             wrapperClassName="flex-1"
+            placeholder="Вкажіть площу в квадратних метрах"
             isIcon
             icon={
               <svg
@@ -58,7 +59,7 @@ export const GeneralInformation = () => {
             }
           />
           <SelectInput
-            label="Rooms"
+            label="Кількість кімнат"
             options={ROOMS_COUNT_OPTIONS.map((option) => ({ value: option, label: option }))}
             name="rooms"
             defaultValue={1}
@@ -67,10 +68,11 @@ export const GeneralInformation = () => {
         </div>
         <div className="space-x-4 flex flex-row">
           <Input
-            label="Floor location"
+            label="Поверх"
             name="floorNumber"
             wrapperClassName="flex-1"
             isIcon
+            placeholder='Наприклад, "10"'
             icon={
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -90,8 +92,9 @@ export const GeneralInformation = () => {
             }
           />
           <Input
-            label="Floor total"
+            label="Поверховість"
             name="totalFloors"
+            placeholder='Наприклад, "10"'
             wrapperClassName="flex-1"
             isIcon
             icon={
@@ -117,6 +120,38 @@ export const GeneralInformation = () => {
                 <path d="M9 18l0 .01" />
               </svg>
             }
+          />
+        </div>
+        <div className="flex flex-row space-x-4">
+          <SelectInput
+            label="Опалення"
+            options={ROOMS_COUNT_OPTIONS.map((option) => ({ value: option, label: option }))}
+            name="rooms"
+            defaultValue={1}
+            className="flex-1"
+          />
+          <SelectInput
+            label="Тип стін"
+            options={ROOMS_COUNT_OPTIONS.map((option) => ({ value: option, label: option }))}
+            name="rooms"
+            defaultValue={1}
+            className="flex-1"
+          />
+        </div>
+        <div className="flex flex-row space-x-4">
+          <SelectInput
+            label="Вік будівлі"
+            options={ROOMS_COUNT_OPTIONS.map((option) => ({ value: option, label: option }))}
+            name="rooms"
+            defaultValue={1}
+            className="flex-1"
+          />
+          <SelectInput
+            label="Санвузол"
+            options={ROOMS_COUNT_OPTIONS.map((option) => ({ value: option, label: option }))}
+            name="rooms"
+            defaultValue={1}
+            className="flex-1"
           />
         </div>
       </div>

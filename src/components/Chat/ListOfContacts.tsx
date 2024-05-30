@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { ChatContext } from '@/contexts/ChatContext';
 
 export const ListOfContacts = ({ contacts }) => {
-  const { changeCurrentChatIndex } = useContext(ChatContext);
+  const { changeCurrentChatIndex, dialogs } = useContext(ChatContext);
 
   return (
     <div className="flex flex-col w-[500px] border-r overflow-y-auto">
@@ -25,7 +25,7 @@ export const ListOfContacts = ({ contacts }) => {
 
           <input
             type="text"
-            placeholder="Search"
+            placeholder="Пошук"
             className="bg-[#F5F5F5] py-2 pl-12 pr-4 w-full rounded-[22px] outline-none h-10"
           />
         </div>
@@ -35,7 +35,11 @@ export const ListOfContacts = ({ contacts }) => {
           lastName={contact.lastName}
           avatar={contact.avatar}
           firstName={contact.firstName}
-          lastMessage="last massage"
+          lastMessage={
+            dialogs.find((dialog) => dialog.with.id === contact.id).messages[
+              dialogs.find((dialog) => dialog.with.id === contact.id).messages.length - 1
+            ].text
+          }
           onClick={() => changeCurrentChatIndex(index)}
         />
       ))}

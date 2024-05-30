@@ -45,6 +45,7 @@ const GoogleMapElement = React.memo(
               return (
                 <MarkerF
                   position={{ lat: ap.lat, lng: ap.lng }}
+                  
                   label={{
                     text: `${ap.price}₴`,
                     className:
@@ -84,7 +85,7 @@ export const MapOfAvailableArticles = ({ apartments }) => {
 
   return (
     <FormCard className="w-full max-w-[1280px] mx-auto relative">
-      <h3 className="text-base font-semibold leading-6 text-gray-900">Location</h3>
+      <h3 className="text-base font-semibold leading-6 text-gray-900">Місце розташування</h3>
       {showCard && (
         <div
           className="bg-white  absolute z-[1000]"

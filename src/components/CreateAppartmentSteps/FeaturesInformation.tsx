@@ -15,7 +15,7 @@ export const FeaturesInformation = () => {
 
   return (
     <FormCard>
-      <h3 className="text-base font-semibold leading-6 text-gray-900">Features</h3>
+      <h3 className="text-base font-semibold leading-6 text-gray-900">Основні зручності</h3>
       <div className="mt-4 grid grid-cols-3">
         {INTERIOR_FEATURES.map((feature) => {
           return (

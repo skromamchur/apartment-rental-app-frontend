@@ -78,11 +78,11 @@ export const SignUpForm = () => {
               type="text"
               autoComplete="firstName"
               required
-              label="First name"
+              label="Ім'я"
             />
           </div>
           <div>
-            <Input name="lastName" type="text" autoComplete="lastName" required label="Last name" />
+            <Input name="lastName" type="text" autoComplete="lastName" required label="Прізвище" />
           </div>
         </div>
 
@@ -93,7 +93,7 @@ export const SignUpForm = () => {
             type="email"
             autoComplete="email"
             required
-            label="Email address"
+            label="Електронна пошта"
           />
         </div>
 
@@ -104,7 +104,7 @@ export const SignUpForm = () => {
             type="password"
             autoComplete="current-password"
             required
-            label="Password"
+            label="Пароль"
           />
         </div>
 
@@ -114,7 +114,7 @@ export const SignUpForm = () => {
             name="confirmPassword"
             type="password"
             required
-            label="Confirm password"
+            label="Підтвердіть пароль"
           />
         </div>
 
@@ -123,7 +123,7 @@ export const SignUpForm = () => {
             type="submit"
             className="flex w-full justify-center rounded-md px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
           >
-            Sign up
+           Зареєструватися
           </Button>
         </div>
       </form>

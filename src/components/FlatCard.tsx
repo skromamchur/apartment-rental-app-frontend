@@ -5,7 +5,37 @@ import { useRouter } from 'next/router';
 
 import moment from 'moment';
 
+import 'moment/locale/uk';
+import {ApartmentDealType} from "@/types/Apartament";
+
+moment.locale('uk');
+
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500'] });
+
+// const navigation = [
+//   { name: 'Всі квартири', href: '/' },
+//   { name: 'Оренда на місяць', href: '/?type=month' },
+//   { name: 'Оренда на добу', href: '/?type=daily' },
+//   { name: 'Оренда кімнат', href: '/?type=room' },
+//   { name: 'Спільна оренда', href: '/?type=co-renting' },
+// ];
+
+const getTypeLabel  = ( type : ApartmentDealType) => {
+  switch (type){
+    case "co-renting":
+      return "Спільна оренда"
+      break;
+    case "day":
+      return "Подобово"
+      break;
+    case "room":
+      return "Кімната"
+      break;
+    case "month":
+      return "Довгостроково"
+      break;
+  }
+}
 
 const RoomIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
@@ -85,7 +115,7 @@ export const FlatCard = ({
       }}
     >
       <div className="absolute top-6 right-6 bg-white rounded-md z-[7] p-1 text-xs">
-        {type[0].toUpperCase() + type.slice(1)}
+        {getTypeLabel(type)}
       </div>
       <div className="w-full aspect-[265/165] relative">
         {photo && <NextImage src={photo} objectFit="cover" layout="fill" alt="" />}
@@ -95,7 +125,7 @@ export const FlatCard = ({
           {price} ₴
         </span>
       </div>
-      <div className={classNames(['mt-3 text-sm text-black'], titleClassname)}>{title}</div>
+      <div className={classNames(['mt-3 text-sm text-black line-clamp-2'], titleClassname)}>{title}</div>
       <div className="mt-3 text-xs text-black text-opacity-50">
         {city}, {street}
       </div>
@@ -113,7 +143,7 @@ export const FlatCard = ({
         </div>
         <div className="space-x-2 flex flex-row items-end">
           <SquareIcon />
-          <span className="text-xs text-black -mt-2">{square} m²</span>
+          <span className="text-xs text-black -mt-2">{square} м²</span>
         </div>
       </div>
     </div>

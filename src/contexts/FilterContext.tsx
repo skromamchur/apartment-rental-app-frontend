@@ -13,6 +13,10 @@ interface FilterContextInterface {
   roomsCount: number[];
   state: string;
   city: string;
+  warmingType : string[];
+  allowPets : string[];
+  allowChildren : string[];
+  wallsType : string[];
   type: ApartmentDealType[];
   sortType: ApartmentSortType;
   handleSearchChange: (value: string) => void;
@@ -27,6 +31,10 @@ interface FilterContextInterface {
   handleApartmentSortOptionChange: (value: ApartmentSortType) => void;
   handleStateChange: (value: string) => void;
   handleCityChange: (value: string) => void;
+  handleWarmingTypeChange: (value: string[]) => void;
+  handleAllowPets: (value: string[]) => void;
+  handleAllowChildren: (value: string[]) => void;
+  handleWallsTypeChange: (value : string[]) => void;
 }
 
 export const FilterContext = createContext<FilterContextInterface>(null);
@@ -44,6 +52,10 @@ export const FilterProvider = ({ children }) => {
   const [sortType, setSortType] = useState<ApartmentSortType>('DATE');
   const [state, setState] = useState('');
   const [city, setCity] = useState('');
+  const [warmingType, setWarmingType] = useState(['individual', 'center'])
+  const [allowPets, setAllowPets] = useState(['allow', 'deny'])
+  const [allowChildren, setAllowChildren] = useState(['allow', 'deny'])
+  const [wallsType, setWallsType] = useState(['панельний', 'цегляний', 'газоблок'])
 
   useEffect(() => {
     setCity('');
@@ -64,6 +76,10 @@ export const FilterProvider = ({ children }) => {
         sortType,
         state,
         city,
+        warmingType,
+        allowPets,
+        allowChildren,
+        wallsType,
         handleSearchChange: (value: string) => setSearch(value),
         handleMaxPriceChange: (value: number) => setMaxPrice(value),
         handleMinPriceChange: (value: number) => setMinPrice(value),
@@ -76,6 +92,10 @@ export const FilterProvider = ({ children }) => {
         handleApartmentSortOptionChange: (value: ApartmentSortType) => setSortType(value),
         handleStateChange: (value: string) => setState(value),
         handleCityChange: (value: string) => setCity(value),
+        handleWarmingTypeChange: (value: string[]) => setWarmingType(value),
+        handleAllowPets: (value: string[]) => setAllowPets(value),
+        handleAllowChildren: (value: string[]) => setAllowChildren(value),
+        handleWallsTypeChange: (value : string[]) => setWallsType(value)
       }}
     >
       {children}

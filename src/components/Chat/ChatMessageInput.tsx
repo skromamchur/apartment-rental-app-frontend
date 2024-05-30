@@ -1,5 +1,5 @@
 import { useForm, useWatch } from 'react-hook-form';
-import { useContext, useRef, useState } from 'react';
+import {useContext, useEffect, useRef, useState} from 'react';
 import { ChatContext } from '@/contexts/ChatContext';
 import axiosClient from '@/api/config/axios';
 import { UserContext } from '@/contexts/UserContext';
@@ -16,16 +16,15 @@ export const ChatMessageInput = () => {
     formData.append('toUserId', dialogs[currentChatIndex].with.id.toString());
     formData.append('text', message);
 
-    if (inputRef.current && inputRef.current.files) {
-      Array.from(inputRef.current.files).forEach((photo: Blob) => {
-        formData.append(`photos`, photo);
-      });
-    }
+    // if (inputRef.current && inputRef.current.files) {
+    //   Array.from(inputRef.current.files).forEach((photo: Blob) => {
+    //     formData.append(`photos`, photo);
+    //   });
+    // }
 
-    await axiosClient.post(`/connections/messages/${dialogs[currentChatIndex].id}`, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+    await axiosClient.post(`/connections/messages/${dialogs[currentChatIndex].id}`, {
+      toUserId : dialogs[currentChatIndex].with.id.toString(),
+      text : message
     });
 
     getUser();
@@ -34,6 +33,14 @@ export const ChatMessageInput = () => {
   const [startMessage, setStartMessage] = useState('');
 
   const inputRef = useRef<HTMLInputElement>();
+  
+  useEffect(() => {
+    if(inputRef.current) {
+      console.log(inputRef.current.files)
+    }
+  }, [inputRef.current?.files])
+  
+  const [showPhotoModal, setShowPhotoModal] = useState<boolean>(false)
 
   return (
     <>
@@ -47,7 +54,11 @@ export const ChatMessageInput = () => {
         )}
       <form onSubmit={methods.handleSubmit(onSubmit)}>
         <div className="h-[56px] w-[696px] mx-auto mb-4 relative">
-          <input type="file" multiple className="hidden" ref={inputRef} />
+          <input type="file" multiple className="hidden" ref={inputRef} onChange={() => {
+            if(inputRef.current.files) {
+              setShowPhotoModal(true)
+            }
+          }}/>
           <button
             type="button"
             onClick={() => {
@@ -75,7 +86,7 @@ export const ChatMessageInput = () => {
           <input
             className="w-full bg-white h-full px-3 rounded-[12px] pl-12 outline-none"
             type="text"
-            placeholder="Message"
+            placeholder="Повідомлення"
             {...methods.register('message')}
           />
         </div>

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FormCard } from '@/components/FormCard';
 import axiosClient from '@/api/config/axios';
 import { UserAvatar } from '@/components/UserAvatar';
@@ -27,22 +27,21 @@ export const ReviewTextArea = ({ id }: { id: number }) => {
   return (
     <FormCard>
       <ToastContainer hideProgressBar />
-      <div className="flex items-start space-x-4">
+      <h3 className="text-base font-semibold leading-6 text-gray-900">Ваш відгук</h3>
+      <div className="flex items-start space-x-4 mt-2">
+
         <div className="flex-shrink-0">
           <UserAvatar avatar={avatar} />
         </div>
         <div className="min-w-0 flex-1">
           <form action="#" className="relative">
             <div className="overflow-hidden rounded-lg shadow-sm ring-1 ring-inset ring-gray-300">
-              <label htmlFor="comment" className="sr-only">
-                Add your comment
-              </label>
               <textarea
-                rows={3}
+                rows={5}
                 name="comment"
                 id="comment"
                 className="block w-full pl-3 resize-none outline-none border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-400  sm:text-sm sm:leading-6"
-                placeholder="Add your comment..."
+                placeholder="Ваш відгук..."
                 defaultValue={''}
                 onChange={(e) => setMessage(e.target.value)}
                 value={message}
@@ -63,7 +62,7 @@ export const ReviewTextArea = ({ id }: { id: number }) => {
       </div>
       <div className="mt-4 flex justify-end">
         <Button type="button" onClick={onSubmit}>
-          Post
+          Опублікувати
         </Button>
       </div>
     </FormCard>

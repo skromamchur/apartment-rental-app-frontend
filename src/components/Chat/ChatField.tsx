@@ -28,6 +28,7 @@ export const ChatField = ({ messages }) => {
             lastName={message.from.lastName}
             createdAt={message.createdAt}
             photos={message.photos}
+            viewed={message.id != 18}
           />
         ))}
       </div>

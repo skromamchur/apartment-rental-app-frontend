@@ -13,13 +13,13 @@ export const UserAvatar = ({
   alt?: string;
 }) => {
   const width = size === 'small' ? 40 : 116;
-  const height = size === 'large' ? 40 : 116;
+  const height = size === 'small' ? 40 : 116;
 
   return (
-    <NextImage
+    <img
       width={width}
       height={height}
-      className={classNames('rounded-full object-cover', className)}
+      className={classNames('rounded-full object-cover flex-0 w-[40px] h-[40px] ', className)}
       src={avatar ?? '/empty-avatar.png'}
       alt={alt}
     />

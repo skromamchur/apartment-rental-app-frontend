@@ -6,34 +6,28 @@ import { useContext, useState } from 'react';
 import { UserContext } from '@/contexts/UserContext';
 import { Button } from '@/components/Button';
 
-export const SignInForm = () => {
+export const ForgotPasswordForm = () => {
   const { handleSubmit } = useFormContext();
 
-  const { getUser } = useContext(UserContext);
-
-  const [invalidCredentialsError, setInvalidCredentialsError] = useState<boolean>(false);
-
-  const router = useRouter();
-
   const onSignInSubmit = async ({ email, password }: { email: string; password: string }) => {
-    setInvalidCredentialsError(false);
-    console.log(email);
-    console.log(password);
-
-    try {
-      const { data } = await axiosClient.post('/auth/sign-in', {
-        email,
-        password,
-      });
-
-      localStorage.setItem('token', data.access_token);
-
-      await getUser();
-
-      router.push('/');
-    } catch (err) {
-      setInvalidCredentialsError(true);
-    }
+    // setInvalidCredentialsError(false);
+    // console.log(email);
+    // console.log(password);
+    //
+    // try {
+    //   const { data } = await axiosClient.post('/auth/sign-in', {
+    //     email,
+    //     password,
+    //   });
+    //
+    //   localStorage.setItem('token', data.access_token);
+    //
+    //   await getUser();
+    //
+    //   router.push('/');
+    // } catch (err) {
+    //   setInvalidCredentialsError(true);
+    // }
   };
 
   return (
@@ -58,34 +52,13 @@ export const SignInForm = () => {
         </div>
 
         <div>
-          <Input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            required
-            label="Пароль"
-          />
-        </div>
-
-        <div className="flex items-center justify-end">
-          <div className="text-sm leading-6">
-            <a className="font-semibold text-primary hover:text-primaryHover cursor-pointer">
-              Забули пароль?
-            </a>
-          </div>
-        </div>
-
-        <div>
           <Button
             type="submit"
             className="flex w-full justify-center rounded-md px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
           >
-            Увійти
+            Змінити
           </Button>
         </div>
-
-        {invalidCredentialsError && <p className="mt-4 text-red-600">Invalid credentials</p>}
       </form>
     </div>
   );

@@ -14,7 +14,7 @@ export const ApartmentPageLocationInformation = ({ lng, lat }) => {
 
   return (
     <FormCard>
-      <h3 className="text-base font-semibold leading-6 text-gray-900">Location</h3>
+      <h3 className="text-base font-semibold leading-6 text-gray-900">Розташування</h3>
       <div
         style={{
           display: 'flex',

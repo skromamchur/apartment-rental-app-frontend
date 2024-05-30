@@ -26,6 +26,11 @@ export const InputPrice = ({
         onChange={(event) => onChange(event.target.value)}
         value={value}
       />
+      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+          <span className="text-gray-500 sm:text-sm" id="price-currency">
+            {icon}
+          </span>
+      </div>
     </div>
   </div>
 );

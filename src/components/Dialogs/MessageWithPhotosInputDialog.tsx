@@ -5,6 +5,9 @@ import { useContext, useRef } from 'react';
 import { UserContext } from '@/contexts/UserContext';
 import { useForm } from 'react-hook-form';
 import { ChatContext } from '@/contexts/ChatContext';
+import {getDownloadURL, getStorage, ref, uploadBytes} from "@firebase/storage";
+import {firebaseApp} from "@/config/firebase";
+import {generateUUID} from "@/utils/GenerateUUID";
 
 export const MessageWithPhotosInputDialog = ({ photos, startMessage }) => {
   const methods = useForm({
@@ -22,14 +25,21 @@ export const MessageWithPhotosInputDialog = ({ photos, startMessage }) => {
     formData.append('toUserId', dialogs[currentChatIndex].with.id.toString());
     formData.append('text', message);
 
-    Array.from(photos).forEach((photo: Blob) => {
-      formData.append(`photos`, photo);
-    });
+    const photosLinksPromises = Array.from(photos).map(async (photo: Blob) => {
+      const storage = getStorage(firebaseApp);
+      const storageRef = ref(storage, `/messages/${generateUUID()}`);
 
-    await axiosClient.post(`/connections/messages/${dialogs[currentChatIndex].id}`, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
+      await uploadBytes(storageRef, photo);
+
+      return await getDownloadURL(storageRef);
+    });
+    
+    const photosLinks = await Promise.all(photosLinksPromises);
+
+    await axiosClient.post(`/connections/messages/${dialogs[currentChatIndex].id}`, {
+      toUserId : dialogs[currentChatIndex].with.id.toString(),
+      text : message,
+      photos : photosLinks
     });
 
     getUser();
@@ -47,9 +57,9 @@ export const MessageWithPhotosInputDialog = ({ photos, startMessage }) => {
         </div>
         <input type="file" multiple className="hidden" ref={inputRef} />
         <input
-          className="w-full bg-white h-full px-3 rounded-[12px] pl-12 outline-none border py-4 mt-6"
+          className="w-full bg-white h-full px-3 rounded-[12px] pl-4 outline-none border py-4 mt-6"
           type="text"
-          placeholder="Message"
+          placeholder="Повідомлення"
           {...methods.register('message')}
         />
       </form>

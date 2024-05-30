@@ -11,11 +11,11 @@ import { APP_ROUTES } from '@/constants/routes/AppRoutes';
 import { UserAvatar } from '@/components/UserAvatar';
 
 const navigation = [
-  { name: 'All apartments', href: '/' },
-  { name: 'Month rental', href: '/?type=month' },
-  { name: 'Daily rental', href: '/?type=daily' },
-  { name: 'Room rental', href: '/?type=room' },
-  { name: 'Co-renting', href: '/?type=co-renting' },
+  { name: 'Всі квартири', href: '/' },
+  { name: 'Оренда на місяць', href: '/?type=month' },
+  { name: 'Оренда на добу', href: '/?type=daily' },
+  { name: 'Оренда кімнат', href: '/?type=room' },
+  { name: 'Спільна оренда', href: '/?type=co-renting' },
 ];
 
 const HeaderIcon = ({ children, onClick }) => {
@@ -196,7 +196,7 @@ export const Header = () => {
               }}
               className="text-sm font-semibold leading-6 text-gray-900"
             >
-              {isAuth ? 'Log out' : 'Log in'} <span aria-hidden="true">&rarr;</span>
+              {isAuth ? 'Вийти' : 'Вхід'} <span aria-hidden="true">&rarr;</span>
             </button>
           )}
         </div>
@@ -205,9 +205,9 @@ export const Header = () => {
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <NextLink href={APP_ROUTES.HOME}>
-              <NextImage src="/logo.svg" width="48" height="32" alt="" />
-            </NextLink>
+            {/*<NextLink href={APP_ROUTES.HOME}>*/}
+            {/*  <NextImage src="/logo.svg" width="48" height="32" alt="" />*/}
+            {/*</NextLink>*/}
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-gray-700"

@@ -70,7 +70,7 @@ export const GoogleMapInput = () => {
 
   return (
     <div
-      className="mt-4"
+      className="flex-1 mt-4"
       style={{
         display: 'flex',
         flexDirection: 'column',
